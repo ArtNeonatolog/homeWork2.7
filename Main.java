@@ -4,9 +4,11 @@ import drivers.DriverB;
 import drivers.DriverC;
 import drivers.DriverD;
 import drivers.Driver;
+import transport.TechStation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 import static transport.BodyType.SEDAN;
 import static transport.CapacityType.*;
@@ -32,7 +34,7 @@ public class Main {
     }
 
     private static void infoOfAuto (PassengerCar passengerCar) {
-        System.out.println("Информация по автомоблию: " + passengerCar.getModel() + " " + passengerCar.getModel());
+        System.out.println("Информация по автомоблию: " + passengerCar.getBrand() + " " + passengerCar.getModel());
         System.out.println("Водители: " + passengerCar.getDrivers());
         System.out.println("Спонсоры: " + passengerCar.getSponsors());
         System.out.println("Механики: " + passengerCar.getMechanics());
@@ -201,12 +203,19 @@ public class Main {
         driverD.driverDriving();
 
         service(car1, car2, car3, car4, truck1, truck2, truck3, truck4, bus1, bus2, bus3, bus4);
+        System.out.println();
 
         List<PassengerCar> passengerCars = List.of(car1, truck1, bus1);
+
+        TechStation techStation = new TechStation();
+        techStation.addA(car1);
+        techStation.addTruck(truck2);
+        techStation.doDiagnostic();
+        techStation.doDiagnostic();
+        System.out.println();
 
         for (PassengerCar passengerCar: passengerCars) {
             infoOfAuto(passengerCar);
         }
-
     }
 }
