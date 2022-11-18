@@ -3,20 +3,17 @@ package transport;
 import drivers.Driver;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public abstract class PassengerCar extends Transport {
 
     private float engineVolume;
 
-    private final List<Driver<?>> drivers = new ArrayList<>();
+    private final Set<Driver<?>> drivers = new HashSet<>();
 
-    private final List<Mechanic<?>> mechanics = new ArrayList<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
 
-    private final List<Sponsor> sponsors = new ArrayList<>();
+    private final Set<Sponsor> sponsors = new HashSet<>();
 
     // private String transmission;
     // private final String bodyType;
@@ -32,26 +29,26 @@ public abstract class PassengerCar extends Transport {
     }
 
     public void adDriver(Driver<?>... drivers) {
-        this.drivers.addAll(Arrays.asList(drivers));
+        this.drivers.addAll(List.of(drivers));
     }
 
     public void adMechanic(Mechanic<?>... mechanics) {
-        this.mechanics.addAll(Arrays.asList(mechanics));
+        this.mechanics.addAll(List.of(mechanics));
     }
 
     public void adSponsor(Sponsor... sponsors) {
-        this.sponsors.addAll(Arrays.asList(sponsors));
+        this.sponsors.addAll(List.of(sponsors));
     }
 
-    public List<Driver<?>> getDrivers() {
+    public Set<Driver<?>> getDrivers() {
         return drivers;
     }
 
-    public List<Mechanic<?>> getMechanics() {
+    public Set<Mechanic<?>> getMechanics() {
         return mechanics;
     }
 
-    public List<Sponsor> getSponsors() {
+    public Set<Sponsor> getSponsors() {
         return sponsors;
     }
 

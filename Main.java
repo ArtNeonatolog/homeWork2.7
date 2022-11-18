@@ -6,9 +6,7 @@ import drivers.DriverD;
 import drivers.Driver;
 import transport.TechStation;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 import static transport.BodyType.SEDAN;
 import static transport.CapacityType.*;
@@ -45,7 +43,8 @@ public class Main {
 
         System.out.println();
         System.out.println("Задание 1");
-        Mechanic<Car> petr = new Mechanic<Car>(" ", " ");
+        Mechanic<Car> petr = new Mechanic<>(" ", " ");
+        Mechanic<Car> ivan = new Mechanic<>("Иван Петров", "Починим бысрто");
         Sponsor lukoil = new Sponsor("Лукойл", 1000000);
         Sponsor gazprom = new Sponsor("Газпром", 10000000);
 
@@ -205,17 +204,17 @@ public class Main {
         service(car1, car2, car3, car4, truck1, truck2, truck3, truck4, bus1, bus2, bus3, bus4);
         System.out.println();
 
-        List<PassengerCar> passengerCars = List.of(car1, truck1, bus1);
+        Set<PassengerCar> passengerCars = new HashSet<>();
+        passengerCars.add(car2);
+        car2.adDriver(driverB);
+        car2.adMechanic(ivan);
+        car2.adSponsor(lukoil, gazprom);
+        car2.adSponsor(lukoil);
+        car2.adMechanic(ivan);
 
-        TechStation techStation = new TechStation();
-        techStation.addA(car1);
-        techStation.addTruck(truck2);
-        techStation.doDiagnostic();
-        techStation.doDiagnostic();
-        System.out.println();
-
-        for (PassengerCar passengerCar: passengerCars) {
+        for (PassengerCar passengerCar : passengerCars) {
             infoOfAuto(passengerCar);
+
         }
     }
 }
