@@ -89,12 +89,12 @@ public abstract class Driver <A extends Transport & Competing> {
         if (this == o) return true;
         if (!(o instanceof Driver)) return false;
         Driver<?> driver = (Driver<?>) o;
-        return driverLicense == driver.driverLicense && drivingExperience == driver.drivingExperience && name.equals(driver.name) && transport.equals(driver.transport);
+        return name.equals(driver.name) && transport.equals(driver.transport);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, driverLicense, drivingExperience, transport);
+        return Objects.hash(name, transport);
     }
 
     @Override

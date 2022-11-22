@@ -39,12 +39,12 @@ public class Sponsor {
         if (this == o) return true;
         if (!(o instanceof Sponsor)) return false;
         Sponsor sponsor = (Sponsor) o;
-        return sum == sponsor.sum && name.equals(sponsor.name);
+        return name.equals(sponsor.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, sum);
+        return Objects.hash(name);
     }
 
     @Override
